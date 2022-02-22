@@ -1,1 +1,15 @@
+pluginManagement {
+    plugins {
+        id "java"
+        id "application"
+
+        id "com.diffplug.spotless" version "6.1.0"
+        id "com.github.johnrengelman.shadow" version "7.1.0"
+    }
+}
+
 rootProject.name = artifactId
+
+include 'slf4j-simple-logger'
+include 'goodforgod-simple-logger'
+
