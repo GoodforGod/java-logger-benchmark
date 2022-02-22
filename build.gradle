@@ -1,0 +1,65 @@
+plugins {
+    id "java"
+    id "application"
+
+    id "com.diffplug.spotless" version "6.1.0"
+    id "com.github.johnrengelman.shadow" version "7.1.0"
+}
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+    maven { url "https://oss.sonatype.org/content/repositories/snapshots" }
+}
+
+group = groupId
+version = artifactVersion
+
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
+
+mainClassName = "io.goodforgod.jmh.Bench"
+
+dependencies {
+    annotationProcessor "org.openjdk.jmh:jmh-generator-annprocess:1.34"
+    implementation "org.openjdk.jmh:jmh-core:1.34"
+}
+
+test {
+    failFast(true)
+    useJUnitPlatform()
+    testLogging {
+        showStandardStreams(false)
+        events("passed", "skipped", "failed")
+        exceptionFormat("full")
+    }
+}
+
+spotless {
+    java {
+        encoding("UTF-8")
+        importOrder()
+        removeUnusedImports()
+        eclipse("4.21.0").configFile("${projectDir}/config/codestyle.xml")
+    }
+}
+
+jar.enabled(true)
+shadowJar {
+    mergeServiceFiles()
+    manifest {
+        attributes "Main-Class": mainClassName
+        attributes "Implementation-Version": artifactVersion
+        attributes "Build-Time": java.time.OffsetDateTime.now()
+    }
+}
+
+artifacts {
+    archives shadowJar
+}
+
+tasks.withType(JavaCompile) {
+    options.encoding("UTF-8")
+    options.incremental(true)
+    options.fork = true
+}
