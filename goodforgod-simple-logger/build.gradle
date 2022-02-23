@@ -1,7 +1,7 @@
 mainClassName = "io.goodforgod.jmh.Bench"
 
 dependencies {
-    implementation 'io.goodforgod:slf4j-simple-logger:0.11.0-SNAPSHOT'
+    implementation "io.goodforgod:slf4j-simple-logger:0.11.0-SNAPSHOT"
 }
 
 shadowJar {

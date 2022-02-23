@@ -26,7 +26,7 @@ public class Bench {
     private Logger logger;
     private String arg1;
     private String arg2;
-    private String[] argArray;
+    private String arg3;
     private Exception exception;
 
     @Setup
@@ -39,7 +39,7 @@ public class Bench {
 
         arg1 = "FirstArgument";
         arg2 = "SecondArgument";
-        argArray = new String[] { arg1, arg2, "ThirdArgument" };
+        arg3 = "ThirdArgument";
         logger = LoggerFactory.getLogger(Bench.class);
     }
 
@@ -55,7 +55,7 @@ public class Bench {
 
     @Benchmark
     public void messageThreeArgumentInTheEnd() {
-        logger.debug("Message is printed for this logger and with arguments '{}' and '{}' and '{}'", argArray);
+        logger.debug("Message is printed for this logger and with arguments '{}' and '{}' and '{}'", arg1, arg2, arg3);
     }
 
     @Benchmark
@@ -70,7 +70,7 @@ public class Bench {
 
     @Benchmark
     public void messageThreeArgumentInTheStart() {
-        logger.debug("'{}' and '{}' and '{}' argument and message is printed for this logger", argArray);
+        logger.debug("'{}' and '{}' and '{}' argument and message is printed for this logger", arg1, arg2, arg3);
     }
 
     @Benchmark
@@ -85,7 +85,7 @@ public class Bench {
 
     @Benchmark
     public void messageThreeArgumentInTheMiddle() {
-        logger.debug("Message is printed for '{}' and '{}' and '{}' argument for this logger", argArray);
+        logger.debug("Message is printed for '{}' and '{}' and '{}' argument for this logger", arg1, arg2, arg3);
     }
 
     @Benchmark
