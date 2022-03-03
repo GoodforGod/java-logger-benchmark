@@ -1,0 +1,12 @@
+mainClassName = "io.goodforgod.jmh.Bench"
+
+dependencies {
+    implementation "ch.qos.logback:logback-classic:1.2.10"
+}
+
+shadowJar {
+    mergeServiceFiles()
+    manifest {
+        attributes "Main-Class": mainClassName
+    }
+}
