@@ -6,11 +6,18 @@ plugins {
     id "com.github.johnrengelman.shadow" version "7.1.0"
 }
 
+sourceCompatibility = JavaVersion.VERSION_11
+targetCompatibility = JavaVersion.VERSION_11
+
+shadowJar {
+    enabled(false)
+}
+
 subprojects {
-    apply plugin: 'java'
-    apply plugin: 'application'
-    apply plugin: 'com.diffplug.spotless'
-    apply plugin: 'com.github.johnrengelman.shadow'
+    apply plugin: "java"
+    apply plugin: "application"
+    apply plugin: "com.diffplug.spotless"
+    apply plugin: "com.github.johnrengelman.shadow"
 
     repositories {
         mavenLocal()
@@ -21,8 +28,8 @@ subprojects {
     group = groupId
     version = artifactVersion
 
-    sourceCompatibility = JavaVersion.VERSION_17
-    targetCompatibility = JavaVersion.VERSION_17
+    sourceCompatibility = JavaVersion.VERSION_11
+    targetCompatibility = JavaVersion.VERSION_11
 
     dependencies {
         annotationProcessor "org.openjdk.jmh:jmh-generator-annprocess:1.34"

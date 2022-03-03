@@ -1,6 +1,8 @@
 mainClassName = "io.goodforgod.jmh.Bench"
 
 dependencies {
+    implementation project(":benchmark")
+
     implementation "org.slf4j:slf4j-simple:1.7.36"
 }
 
