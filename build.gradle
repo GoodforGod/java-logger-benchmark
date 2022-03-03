@@ -6,6 +6,9 @@ plugins {
     id "com.github.johnrengelman.shadow" version "7.1.0"
 }
 
+group = groupId
+version = artifactVersion
+
 sourceCompatibility = JavaVersion.VERSION_11
 targetCompatibility = JavaVersion.VERSION_11
 
