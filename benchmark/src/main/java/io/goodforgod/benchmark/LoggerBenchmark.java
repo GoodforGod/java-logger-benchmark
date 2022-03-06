@@ -44,52 +44,52 @@ public abstract class LoggerBenchmark {
 
     @Benchmark
     public void messageOneArgumentInTheEnd() {
-        logger.debug("Message is printed for this logger and with the argument: {}", arg1);
+        logger.info("Message is printed for this logger and with the argument: {}", arg1);
     }
 
     @Benchmark
     public void messageTwoArgumentInTheEnd() {
-        logger.debug("Message is printed for this logger and with arguments '{}' and '{}'", arg1, arg2);
+        logger.info("Message is printed for this logger and with arguments '{}' and '{}'", arg1, arg2);
     }
 
     @Benchmark
     public void messageThreeArgumentInTheEnd() {
-        logger.debug("Message is printed for this logger and with arguments '{}' and '{}' and '{}'", arg1, arg2, arg3);
+        logger.info("Message is printed for this logger and with arguments '{}' and '{}' and '{}'", arg1, arg2, arg3);
     }
 
     @Benchmark
     public void messageOneArgumentInTheStart() {
-        logger.debug("'{}' argument and message is printed for this logger", arg1);
+        logger.info("'{}' argument and message is printed for this logger", arg1);
     }
 
     @Benchmark
     public void messageTwoArgumentInTheStart() {
-        logger.debug("'{}' and '{}' arguments and message is printed for this logger", arg1, arg2);
+        logger.info("'{}' and '{}' arguments and message is printed for this logger", arg1, arg2);
     }
 
     @Benchmark
     public void messageThreeArgumentInTheStart() {
-        logger.debug("'{}' and '{}' and '{}' argument and message is printed for this logger", arg1, arg2, arg3);
+        logger.info("'{}' and '{}' and '{}' argument and message is printed for this logger", arg1, arg2, arg3);
     }
 
     @Benchmark
     public void messageOneArgumentInTheMiddle() {
-        logger.debug("Message is printed for '{}' argument for this logger", arg1);
+        logger.info("Message is printed for '{}' argument for this logger", arg1);
     }
 
     @Benchmark
     public void messageTwoArgumentInTheMiddle() {
-        logger.debug("Message is printed for '{}' and '{}' argument for this logger", arg1, arg2);
+        logger.info("Message is printed for '{}' and '{}' argument for this logger", arg1, arg2);
     }
 
     @Benchmark
     public void messageThreeArgumentInTheMiddle() {
-        logger.debug("Message is printed for '{}' and '{}' and '{}' argument for this logger", arg1, arg2, arg3);
+        logger.info("Message is printed for '{}' and '{}' and '{}' argument for this logger", arg1, arg2, arg3);
     }
 
     @Benchmark
     public void messageAndStacktrace() {
-        logger.warn("Message is printed for this logger and there is stacktrace", exception);
+        logger.info("Message is printed for this logger and there is stacktrace", exception);
     }
 
     // cause we need stacktrace

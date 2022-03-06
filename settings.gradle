@@ -4,4 +4,5 @@ include 'slf4j-simple-logger'
 include 'goodforgod-simple-logger'
 include 'logback-logger'
 include 'benchmark'
+include 'system-logger'
 

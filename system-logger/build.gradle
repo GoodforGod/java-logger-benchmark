@@ -1,0 +1,8 @@
+mainClassName = "io.goodforgod.jmh.SystemLoggerBenchmark"
+
+shadowJar {
+    mergeServiceFiles()
+    manifest {
+        attributes "Main-Class": mainClassName
+    }
+}
