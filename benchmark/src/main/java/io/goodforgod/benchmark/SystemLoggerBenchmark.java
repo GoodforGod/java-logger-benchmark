@@ -1,17 +1,12 @@
-package io.goodforgod.jmh;
+package io.goodforgod.benchmark;
 
 import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.runner.Runner;
-import org.openjdk.jmh.runner.RunnerException;
 import org.openjdk.jmh.runner.options.Options;
 import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-@State(Scope.Benchmark)
-public class SystemLoggerBenchmark {
+public abstract class SystemLoggerBenchmark {
 
-    public static void main(String[] args) throws RunnerException {
-        new Runner(getBenchmarkOptions(SystemLoggerBenchmark.class)).run();
-    }
+    protected SystemLoggerBenchmark() {}
 
     protected static Options getBenchmarkOptions(Class<?> benchType) {
         return new OptionsBuilder()
@@ -50,44 +45,44 @@ public class SystemLoggerBenchmark {
 
     @Benchmark
     public void messageTwoArgumentInTheEnd() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for this logger and with arguments '{0}' and '{1}'", arg1, arg2);
+        logger.log(System.Logger.Level.INFO, "Message is printed for this logger and with arguments {0} and {1}", arg1, arg2);
     }
 
     @Benchmark
     public void messageThreeArgumentInTheEnd() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for this logger and with arguments '{0}' and '{1}' and '{2}'",
+        logger.log(System.Logger.Level.INFO, "Message is printed for this logger and with arguments {0} and {1} and {2}",
                 arg1, arg2, arg3);
     }
 
     @Benchmark
     public void messageOneArgumentInTheStart() {
-        logger.log(System.Logger.Level.INFO, "'{0}' argument and message is printed for this logger", arg1);
+        logger.log(System.Logger.Level.INFO, "{0} argument and message is printed for this logger", arg1);
     }
 
     @Benchmark
     public void messageTwoArgumentInTheStart() {
-        logger.log(System.Logger.Level.INFO, "'{0}' and '{1}' arguments and message is printed for this logger", arg1, arg2);
+        logger.log(System.Logger.Level.INFO, "{0} and {1} arguments and message is printed for this logger", arg1, arg2);
     }
 
     @Benchmark
     public void messageThreeArgumentInTheStart() {
-        logger.log(System.Logger.Level.INFO, "'{0}' and '{1}' and '{2}' argument and message is printed for this logger", arg1,
+        logger.log(System.Logger.Level.INFO, "{0} and {1} and {2} argument and message is printed for this logger", arg1,
                 arg2, arg3);
     }
 
     @Benchmark
     public void messageOneArgumentInTheMiddle() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for '{0}' argument for this logger", arg1);
+        logger.log(System.Logger.Level.INFO, "Message is printed for {0} argument for this logger", arg1);
     }
 
     @Benchmark
     public void messageTwoArgumentInTheMiddle() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for '{0}' and '{1}' argument for this logger", arg1, arg2);
+        logger.log(System.Logger.Level.INFO, "Message is printed for {0} and {1} argument for this logger", arg1, arg2);
     }
 
     @Benchmark
     public void messageThreeArgumentInTheMiddle() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for '{0}' and '{1}' and '{2}' argument for this logger", arg1,
+        logger.log(System.Logger.Level.INFO, "Message is printed for {0} and {1} and {2} argument for this logger", arg1,
                 arg2, arg3);
     }
 

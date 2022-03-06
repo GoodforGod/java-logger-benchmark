@@ -1,4 +1,8 @@
-mainClassName = "io.goodforgod.jmh.SystemLoggerBenchmark"
+mainClassName = "io.goodforgod.systemlogger.Bench"
+
+dependencies {
+    implementation project(":benchmark")
+}
 
 shadowJar {
     mergeServiceFiles()
