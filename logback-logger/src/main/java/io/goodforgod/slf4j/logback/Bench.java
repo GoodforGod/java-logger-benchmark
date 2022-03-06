@@ -1,12 +1,12 @@
-package io.goodforgod.jmh;
+package io.goodforgod.slf4j.logback;
 
-import io.goodforgod.benchmark.LoggerBenchmark;
+import io.goodforgod.benchmark.Slf4jLoggerBenchmark;
 import org.openjdk.jmh.annotations.*;
 import org.openjdk.jmh.runner.Runner;
 import org.openjdk.jmh.runner.RunnerException;
 
 @State(Scope.Benchmark)
-public class Bench extends LoggerBenchmark {
+public class Bench extends Slf4jLoggerBenchmark {
 
     public static void main(String[] args) throws RunnerException {
         new Runner(getBenchmarkOptions(Bench.class)).run();

@@ -1,4 +1,4 @@
-mainClassName = "io.goodforgod.jmh.Bench"
+mainClassName = "io.goodforgod.slf4j.goodforgod.Bench"
 
 dependencies {
     implementation project(":benchmark")
