@@ -13,7 +13,7 @@ public abstract class SystemLoggerBenchmark {
                 .include(benchType.getSimpleName())
                 .forks(1)
                 .mode(Mode.Throughput)
-                .measurementIterations(2)
+                .measurementIterations(5)
                 .warmupIterations(1)
                 .build();
     }
