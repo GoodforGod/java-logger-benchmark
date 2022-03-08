@@ -1,22 +1,10 @@
 package io.goodforgod.benchmark;
 
 import org.openjdk.jmh.annotations.*;
-import org.openjdk.jmh.runner.options.Options;
-import org.openjdk.jmh.runner.options.OptionsBuilder;
 
-public abstract class SystemLoggerBenchmark {
+public abstract class SystemLoggerBenchmark extends LoggerBenchmark {
 
     protected SystemLoggerBenchmark() {}
-
-    protected static Options getBenchmarkOptions(Class<?> benchType) {
-        return new OptionsBuilder()
-                .include(benchType.getSimpleName())
-                .forks(1)
-                .mode(Mode.Throughput)
-                .measurementIterations(5)
-                .warmupIterations(1)
-                .build();
-    }
 
     private System.Logger logger;
     private String arg1;
@@ -35,7 +23,7 @@ public abstract class SystemLoggerBenchmark {
         arg1 = "FirstArgument";
         arg2 = "SecondArgument";
         arg3 = "ThirdArgument";
-        logger = System.getLogger(SystemLoggerBenchmark.class.getName());
+        logger = System.getLogger(LoggerBenchmark.class.getName());
     }
 
     @Benchmark
