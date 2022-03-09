@@ -2,6 +2,12 @@ package io.goodforgod.benchmark;
 
 import org.openjdk.jmh.annotations.*;
 
+/**
+ * Java System Logger benchmark
+ *
+ * @author Anton Kurako (GoodforGod)
+ * @since 06.03.2022
+ */
 public abstract class SystemLoggerBenchmark extends LoggerBenchmark {
 
     protected SystemLoggerBenchmark() {}

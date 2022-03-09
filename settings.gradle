@@ -5,4 +5,5 @@ include 'goodforgod-simple-logger'
 include 'logback-logger'
 include 'benchmark'
 include 'system-logger'
+include 'log4j-logger'
 

@@ -1,19 +1,19 @@
 package io.goodforgod.benchmark;
 
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.openjdk.jmh.annotations.Benchmark;
 import org.openjdk.jmh.annotations.Setup;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
- * sfl4j benchmark
+ * Log4j benchmark
  *
  * @author Anton Kurako (GoodforGod)
- * @since 03.03.2022
+ * @since 09.03.2022
  */
-public abstract class Slf4jLoggerBenchmark extends LoggerBenchmark {
+public abstract class Log4jLoggerBenchmark extends LoggerBenchmark {
 
-    protected Slf4jLoggerBenchmark() {}
+    protected Log4jLoggerBenchmark() {}
 
     private Logger logger;
     private String arg1;
@@ -32,7 +32,7 @@ public abstract class Slf4jLoggerBenchmark extends LoggerBenchmark {
         arg1 = "FirstArgument";
         arg2 = "SecondArgument";
         arg3 = "ThirdArgument";
-        logger = LoggerFactory.getLogger(LoggerBenchmark.class);
+        logger = LogManager.getLogger(LoggerBenchmark.class);
     }
 
     @Benchmark
