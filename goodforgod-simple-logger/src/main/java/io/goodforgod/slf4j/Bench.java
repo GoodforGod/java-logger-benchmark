@@ -1,4 +1,4 @@
-package io.goodforgod.slf4j.goodforgod;
+package io.goodforgod.slf4j;
 
 import io.goodforgod.benchmark.Slf4jLoggerBenchmark;
 import org.openjdk.jmh.annotations.*;

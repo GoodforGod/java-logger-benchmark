@@ -1,4 +1,4 @@
-mainClassName = "io.goodforgod.systemlogger.Bench"
+mainClassName = "io.goodforgod.system.Bench"
 
 dependencies {
     implementation project(":benchmark")
