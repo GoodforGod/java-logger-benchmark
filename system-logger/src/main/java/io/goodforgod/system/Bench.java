@@ -1,4 +1,4 @@
-package io.goodforgod.systemlogger;
+package io.goodforgod.system;
 
 import io.goodforgod.benchmark.SystemLoggerBenchmark;
 import org.openjdk.jmh.annotations.*;

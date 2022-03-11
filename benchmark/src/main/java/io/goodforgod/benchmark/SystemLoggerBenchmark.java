@@ -81,6 +81,11 @@ public abstract class SystemLoggerBenchmark extends LoggerBenchmark {
     }
 
     @Benchmark
+    public void messageWithoutArguments() {
+        logger.log(System.Logger.Level.INFO, "Message is printed for this logger without arguments");
+    }
+
+    @Benchmark
     public void messageAndStacktrace() {
         logger.log(System.Logger.Level.INFO, "Message is printed for this logger and there is stacktrace", exception);
     }

@@ -81,6 +81,11 @@ public abstract class Log4jLoggerBenchmark extends LoggerBenchmark {
     }
 
     @Benchmark
+    public void messageWithoutArguments() {
+        logger.info("Message is printed for this logger without arguments");
+    }
+
+    @Benchmark
     public void messageAndStacktrace() {
         logger.info("Message is printed for this logger and there is stacktrace", exception);
     }

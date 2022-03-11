@@ -22,8 +22,8 @@ abstract class LoggerBenchmark {
                 .include(benchType.getSimpleName())
                 .forks(1)
                 .mode(Mode.Throughput)
-                .measurementIterations(5)
-                .warmupIterations(1)
+                .measurementIterations(6)
+                .warmupIterations(2)
                 .build();
     }
 }
