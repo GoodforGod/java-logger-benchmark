@@ -8,6 +8,6 @@ import org.openjdk.jmh.runner.RunnerException;
 public class Bench extends Slf4jLoggerBenchmark {
 
     public static void main(String[] args) throws RunnerException {
-        getBenchmarkRunner(Bench.class).run();
+        getBenchmarkRunner(Bench.class, args).run();
     }
 }
