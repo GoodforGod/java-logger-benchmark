@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Configuration status="DEBUG">
     <Appenders>
-        <Console name="ConsoleAppender" target="SYSTEM_OUT">
+        <Console name="ConsoleAppender" target="SYSTEM_ERR">
             <PatternLayout pattern="%d{yyyy-MM-dd'T'HH:mm:ss.SSS} [%level] %logger - %msg%n%throwable"/>
         </Console>
     </Appenders>
