@@ -29,9 +29,7 @@ jobs:
         run: ./gradlew spotlessCheck
 
       - name: Build
-        run: >
-          java -version
-          ./gradlew shadowJar
+        run: ./gradlew shadowJar
 
       - name: Benchmark [goodforgod-simple-logger]
         run: java -jar goodforgod-simple-logger/build/libs/*-all.jar 2>/dev/null
