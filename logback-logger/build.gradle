@@ -3,7 +3,7 @@ mainClassName = "io.goodforgod.slf4j.Bench"
 dependencies {
     implementation project(":benchmark")
 
-    implementation "ch.qos.logback:logback-classic:1.2.10"
+    implementation "ch.qos.logback:logback-classic:1.2.11"
 }
 
 shadowJar {
