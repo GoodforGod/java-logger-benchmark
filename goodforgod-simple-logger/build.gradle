@@ -3,7 +3,7 @@ mainClassName = "io.goodforgod.slf4j.Bench"
 dependencies {
     implementation project(":benchmark")
 
-    implementation "io.goodforgod:slf4j-simple-logger:0.13.0-SNAPSHOT"
+    implementation "io.goodforgod:slf4j-simple-logger:0.13.0"
 }
 
 shadowJar {
