@@ -17,31 +17,33 @@ Do not assume the numbers tell you what you want them to tell.
 
 ### Setup 1
 
-This benchmark results are based on run inside **GitHub CI** and **have forwarded stdout to /dev/null**, due to such reasons numbers differ a lot from other setups.
+This benchmark results are based on run inside **GitHub CI** and **have forwarded stderr to /dev/null**.
 
 Benchmark setup configuration:
 - OS: Ubuntu (Github CI)
 - Processor: Unknown
-- Java: 17
+- Java: JDK 17.0.2, OpenJDK 64-Bit Server VM, 17.0.2+8-LTS
 - Execution: *java -jar benchmark-name.jar 2>/dev/null*
 
-| Benchmark | Mode | Warmup | Iterations | Units | goodforgod-simple | slf4j-simple | logback | java-system | log4j |
-|---|---|---|---|---|---|---|---|---|---|
-| Bench.messageAndStacktrace            | thrpt | 2 | 6 | ops/s | 108969.841 ±  1220.438 | 12366.305 ±  461.561  | 111496.173 ±  4041.352 | 37387.085 ± 2245.224 | 87795.288 ±  1983.474 |
-| Bench.messageWithoutArguments         | thrpt | 2 | 6 | ops/s | 358553.097 ±  5158.998 | 151473.706 ± 4238.530 | 415666.850 ± 13100.520 | 37755.863 ±  842.232 | 396755.873 ± 10690.119 |
-| Bench.messageOneArgumentInTheEnd      | thrpt | 2 | 6 | ops/s | 349349.389 ± 13009.057 | 148200.910 ± 2213.046 | 393199.681 ±  9640.942 | 37061.470 ±  477.426 | 382316.724 ±  8532.265 |
-| Bench.messageOneArgumentInTheMiddle   | thrpt | 2 | 6 | ops/s | 338682.012 ± 19501.442 | 157137.503 ± 3342.646 | 404744.761 ± 12918.572 | 37221.650 ±  818.886 | 377354.507 ±  7989.285 |
-| Bench.messageOneArgumentInTheStart    | thrpt | 2 | 6 | ops/s | 337172.005 ± 12300.264 | 153211.637 ± 1223.746 | 411442.696 ± 12080.951 | 36818.120 ±  686.588 | 375460.958 ± 15183.787 |
-| Bench.messageTwoArgumentInTheEnd      | thrpt | 2 | 6 | ops/s | 343983.274 ± 12776.517 | 146449.651 ± 2212.247 | 369039.069 ± 12823.837 | 36728.274 ±  696.379 | 361242.660 ± 10655.840 |
-| Bench.messageTwoArgumentInTheMiddle   | thrpt | 2 | 6 | ops/s | 333923.221 ±  6596.461 | 145630.924 ± 2384.116 | 392314.282 ±  5199.286 | 36565.767 ±  616.770 | 374722.478 ± 10728.525 |
-| Bench.messageTwoArgumentInTheStart    | thrpt | 2 | 6 | ops/s | 336758.535 ±  7078.576 | 151427.439 ± 2504.679 | 401265.411 ± 11911.763 | 36682.291 ± 1096.114 | 372485.611 ±  6252.810 |
-| Bench.messageThreeArgumentInTheEnd    | thrpt | 2 | 6 | ops/s | 322653.951 ±  8691.489 | 147825.295 ± 2136.851 | 385971.999 ± 10836.915 | 35154.545 ±  551.951 | 348492.960 ±  2281.462 |
-| Bench.messageThreeArgumentInTheMiddle | thrpt | 2 | 6 | ops/s | 332297.514 ± 16354.319 | 146118.604 ± 2632.893 | 382905.102 ±  6866.816 | 34867.715 ±  603.432 | 367751.281 ±  5236.246 |
-| Bench.messageThreeArgumentInTheStart  | thrpt | 2 | 6 | ops/s | 321365.354 ±  4217.673 | 146939.607 ± 3065.354 | 386608.630 ±  9976.115 | 35927.525 ± 1518.802 | 355676.256 ±  9404.628 |
+| Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
+|---|---|---|---|---|---|---|---|---|
+| messageAndStacktrace            | 2 | 6 | ops/s | 117365 ±  2118 | 12832 ±  1087 | 118095 ±  2158 | 103683 ±  3284 | 40342 ±  629 |
+| messageWithoutArguments         | 2 | 6 | ops/s | 503906 ± 24217 | 176912 ± 13586 | 488800 ± 37822 | 420665 ±  8805 | 40777 ±  617 |
+| messageOneArgumentInTheEnd      | 2 | 6 | ops/s | 475680 ± 23021 | 170384 ± 29214 | 450336 ±  4803 | 413645 ± 32625 | 41513 ±  823 |
+| messageOneArgumentInTheMiddle   | 2 | 6 | ops/s | 476436 ± 12130 | 190546 ± 13642 | 454803 ± 21936 | 429710 ± 13751 | 41482 ± 1392 |
+| messageOneArgumentInTheStart    | 2 | 6 | ops/s | 460164 ± 11014 | 186111 ± 15280 | 444657 ±  2332 | 417252 ±  8034 | 40407 ± 1313 |
+| messageTwoArgumentInTheEnd      | 2 | 6 | ops/s | 449377 ±  9286 | 178412 ± 26319 | 440259 ±  3819 | 371821 ± 25846 | 40151 ±  716 |
+| messageTwoArgumentInTheMiddle   | 2 | 6 | ops/s | 437624 ±  4854 | 182567 ± 17643 | 439746 ± 12459 | 409443 ± 10546 | 40756 ±  690 |
+| messageTwoArgumentInTheStart    | 2 | 6 | ops/s | 433289 ± 16436 | 181263 ± 22115 | 433450 ± 21592 | 387061 ±  7459 | 40064 ±  503 |
+| messageThreeArgumentInTheEnd    | 2 | 6 | ops/s | 435443 ± 14175 | 179582 ± 21615 | 427762 ± 34262 | 393146 ±  8272 | 40407 ± 1313 |
+| messageThreeArgumentInTheMiddle | 2 | 6 | ops/s | 434948 ± 25266 | 184036 ± 20658 | 420698 ± 32571 | 378362 ± 15518 | 40150 ±  681 |
+| messageThreeArgumentInTheStart  | 2 | 6 | ops/s | 441791 ± 26952 | 183132 ± 10275 | 422269 ± 32483 | 398629 ±  7963 | 39304 ±  988 |
 
-You can check [results by yourself](https://github.com/GoodforGod/java-logger-benchmark/runs/5526628089).
+You can check [results by yourself](https://github.com/GoodforGod/java-logger-benchmark/actions/runs/1989473193).
 
 ### Setup 2
+
+This benchmark **have forwarded stderr to NUL (/dev/null analog in windows)**.
 
 Benchmark setup configuration:
 - OS: Windows 10
@@ -49,21 +51,23 @@ Benchmark setup configuration:
 - Java: OpenJDK 64-Bit Server VM (build 17+35-2724, mixed mode, sharing)
 - Execution: *java -jar benchmark-name.jar 2>NUL*
 
-| Benchmark | Mode | Warmup | Iterations | Units | goodforgod-simple | slf4j-simple | logback | java-system | log4j |
-|---|---|---|---|---|---|---|---|---|---|
-| Bench.messageAndStacktrace            | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageWithoutArguments         | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageOneArgumentInTheEnd      | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageOneArgumentInTheMiddle   | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageOneArgumentInTheStart    | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageTwoArgumentInTheEnd      | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageTwoArgumentInTheMiddle   | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageTwoArgumentInTheStart    | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageThreeArgumentInTheEnd    | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageThreeArgumentInTheMiddle | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageThreeArgumentInTheStart  | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
+| Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
+|---|---|---|---|---|---|---|---|---|
+| messageAndStacktrace            | 2 | 6 | ops/s |  |  |  |  |  |
+| messageWithoutArguments         | 2 | 6 | ops/s |  |  |  |  |  |
+| messageOneArgumentInTheEnd      | 2 | 6 | ops/s |  |  |  |  |  |
+| messageOneArgumentInTheMiddle   | 2 | 6 | ops/s |  |  |  |  |  |
+| messageOneArgumentInTheStart    | 2 | 6 | ops/s |  |  |  |  |  |
+| messageTwoArgumentInTheEnd      | 2 | 6 | ops/s |  |  |  |  |  |
+| messageTwoArgumentInTheMiddle   | 2 | 6 | ops/s |  |  |  |  |  |
+| messageTwoArgumentInTheStart    | 2 | 6 | ops/s |  |  |  |  |  |
+| messageThreeArgumentInTheEnd    | 2 | 6 | ops/s |  |  |  |  |  |
+| messageThreeArgumentInTheMiddle | 2 | 6 | ops/s |  |  |  |  |  |
+| messageThreeArgumentInTheStart  | 2 | 6 | ops/s |  |  |  |  |  |
 
 ### Setup 3
+
+This benchmark **have forwarded stderr to NUL (/dev/null analog in windows)**.
 
 Benchmark setup configuration:
 - OS: Windows 10
@@ -71,16 +75,16 @@ Benchmark setup configuration:
 - Java: 
 - Execution: *java -jar benchmark-name.jar 2>NUL*
 
-| Benchmark | Mode | Warmup | Iterations | Units | goodforgod-simple | slf4j-simple | logback | java-system | log4j |
-|---|---|---|---|---|---|---|---|---|---|
-| Bench.messageAndStacktrace            | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageWithoutArguments         | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageOneArgumentInTheEnd      | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageOneArgumentInTheMiddle   | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageOneArgumentInTheStart    | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageTwoArgumentInTheEnd      | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageTwoArgumentInTheMiddle   | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageTwoArgumentInTheStart    | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageThreeArgumentInTheEnd    | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageThreeArgumentInTheMiddle | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
-| Bench.messageThreeArgumentInTheStart  | thrpt | 2 | 6 | ops/s |  |  |  |  |  |
+| Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
+|---|---|---|---|---|---|---|---|---|
+| messageAndStacktrace            | 2 | 6 | ops/s |  |  |  |  |  |
+| messageWithoutArguments         | 2 | 6 | ops/s |  |  |  |  |  |
+| messageOneArgumentInTheEnd      | 2 | 6 | ops/s |  |  |  |  |  |
+| messageOneArgumentInTheMiddle   | 2 | 6 | ops/s |  |  |  |  |  |
+| messageOneArgumentInTheStart    | 2 | 6 | ops/s |  |  |  |  |  |
+| messageTwoArgumentInTheEnd      | 2 | 6 | ops/s |  |  |  |  |  |
+| messageTwoArgumentInTheMiddle   | 2 | 6 | ops/s |  |  |  |  |  |
+| messageTwoArgumentInTheStart    | 2 | 6 | ops/s |  |  |  |  |  |
+| messageThreeArgumentInTheEnd    | 2 | 6 | ops/s |  |  |  |  |  |
+| messageThreeArgumentInTheMiddle | 2 | 6 | ops/s |  |  |  |  |  |
+| messageThreeArgumentInTheStart  | 2 | 6 | ops/s |  |  |  |  |  |
