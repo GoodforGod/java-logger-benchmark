@@ -105,3 +105,30 @@ Benchmark setup configuration:
 | messageThreeArgumentInTheEnd    | 2 | 6 | ops/s |  |  |  |  |  |
 | messageThreeArgumentInTheMiddle | 2 | 6 | ops/s |  |  |  |  |  |
 | messageThreeArgumentInTheStart  | 2 | 6 | ops/s |  |  |  |  |  |
+
+
+## Run
+
+In case you want to try benchmark yourself, then you should compile and package all benchmarks first:
+```shell
+./gradlew shadowJar
+```
+
+Then you can run each of them in their proper directory, for example to run *goodforgod-simple-logger* benchmark:
+```shell
+java -jar goodforgod-simple-logger/build/libs/*all.jar
+```
+
+If you want to suppress logger output to measure raw performance, you should redirect STRERR that logger produce to /dev/null.
+```shell
+java -jar goodforgod-simple-logger/build/libs/*all.jar 2>/dev/null
+```
+
+### Configuration
+
+You can configure the number of *warmup* and *iterations* with command line arguments, the first argument corresponds to warmups and second is for iterations:
+
+Example below will run 1 warmup and 1 iteration:
+```shell
+java -jar goodforgod-simple-logger/build/libs/*all.jar 1 1
+```
