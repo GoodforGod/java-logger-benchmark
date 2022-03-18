@@ -1,6 +1,10 @@
 # Java Logger Benchmark
 
+[![GitHub Action](https://github.com/goodforgod/java-logger-benchmark/workflows/Java%20CI/badge.svg)](https://github.com/GoodforGod/java-logger-benchmark/actions?query=workflow%3A%22Java+CI%22)
+
 JMH Benchmark for different Java Logger implementations.
+
+Benchmark was initially created to test my [slf4j-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) implementation vs original [slf4j-simple-logger](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html).
 
 ## Benchmark
 
@@ -70,17 +74,17 @@ Benchmark setup configuration:
 
 | Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
 |---|---|---|---|---|---|---|---|---|
-| messageAndStacktrace            | 2 | 6 | ops/s |  |  |  |  |  |
-| messageWithoutArguments         | 2 | 6 | ops/s |  |  |  |  |  |
-| messageOneArgumentInTheEnd      | 2 | 6 | ops/s |  |  |  |  |  |
-| messageOneArgumentInTheMiddle   | 2 | 6 | ops/s |  |  |  |  |  |
-| messageOneArgumentInTheStart    | 2 | 6 | ops/s |  |  |  |  |  |
-| messageTwoArgumentInTheEnd      | 2 | 6 | ops/s |  |  |  |  |  |
-| messageTwoArgumentInTheMiddle   | 2 | 6 | ops/s |  |  |  |  |  |
-| messageTwoArgumentInTheStart    | 2 | 6 | ops/s |  |  |  |  |  |
-| messageThreeArgumentInTheEnd    | 2 | 6 | ops/s |  |  |  |  |  |
-| messageThreeArgumentInTheMiddle | 2 | 6 | ops/s |  |  |  |  |  |
-| messageThreeArgumentInTheStart  | 2 | 6 | ops/s |  |  |  |  |  |
+| messageAndStacktrace            | 2 | 6 | ops/s | 58718±669 | 2684±142 | 54617±240 | 43765±605 | 22721±262 |
+| messageWithoutArguments         | 2 | 6 | ops/s | 120257±34208 | 32231±4528 | 101818±5985 | 89485±12457 | 31956±747 |
+| messageOneArgumentInTheEnd      | 2 | 6 | ops/s | 116935±32015 | 43576±4416 | 93380±13191 | 87549±1835 | 29963±355 |
+| messageOneArgumentInTheMiddle   | 2 | 6 | ops/s | 137995±36420 | 40252±9626 | 82164±3273 | 90059±17408 | 30299±167 |
+| messageOneArgumentInTheStart    | 2 | 6 | ops/s | 100351±19414 | 41611±9423 | 88131±5613 | 92676±18736 | 30424±353 |
+| messageTwoArgumentInTheEnd      | 2 | 6 | ops/s | 95318±4567 | 44082±4324 | 85102±3035 | 87795±7094 | 29248±548 |
+| messageTwoArgumentInTheMiddle   | 2 | 6 | ops/s | 101764±13604 | 41920±7623 | 86166±987 | 96163±28330 | 30086±642 |
+| messageTwoArgumentInTheStart    | 2 | 6 | ops/s | 97099±14191 | 48236±8364 | 91736±10191 | 85855±4260 | 29137±518 |
+| messageThreeArgumentInTheEnd    | 2 | 6 | ops/s | 99141±11514 | 46913±3136 | 91344±8744 | 89784±14493 | 29543±371 |
+| messageThreeArgumentInTheMiddle | 2 | 6 | ops/s | 96524±10997 | 38981±3724 | 90234±1231 | 89083±11264 | 30155±409 |
+| messageThreeArgumentInTheStart  | 2 | 6 | ops/s | 125277±10888 | 40526±13953 | 83704±1428 | 86095±2454 | 29521±311 |
 
 ### Setup 3
 
