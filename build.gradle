@@ -9,8 +9,8 @@ plugins {
 group = groupId
 version = artifactVersion
 
-sourceCompatibility = JavaVersion.VERSION_11
-targetCompatibility = JavaVersion.VERSION_11
+sourceCompatibility = JavaVersion.VERSION_17
+targetCompatibility = JavaVersion.VERSION_17
 
 shadowJar {
     enabled(false)
@@ -32,8 +32,8 @@ subprojects {
     group = groupId
     version = artifactVersion
 
-    sourceCompatibility = JavaVersion.VERSION_11
-    targetCompatibility = JavaVersion.VERSION_11
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
 
     dependencies {
         annotationProcessor "org.openjdk.jmh:jmh-generator-annprocess:1.34"
