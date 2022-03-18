@@ -46,21 +46,41 @@ Benchmark setup configuration:
 - Java: JDK 17.0.2, OpenJDK 64-Bit Server VM, 17.0.2+8-LTS
 - [Execution](https://github.com/GoodforGod/java-logger-benchmark/blob/master/.github/workflows/gradle.yml#L37-L50): *java -jar benchmark-name.jar 2>/dev/null*
 
+#### Raw Results
+
 | Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
 |---|---|---|---|---|---|---|---|---|
-| messageAndStacktrace            | 2 | 6 | ops/s | 117365±2118 | 12832±1087 | 118095±2158 | 103683±3284 | 40342±629 |
-| messageWithoutArguments         | 2 | 6 | ops/s | 503906±24217 | 176912±13586 | 488800±37822 | 420665±8805 | 40777±617 |
-| messageOneArgumentInTheEnd      | 2 | 6 | ops/s | 475680±23021 | 170384±29214 | 450336±4803 | 413645±32625 | 41513±823 |
-| messageOneArgumentInTheMiddle   | 2 | 6 | ops/s | 476436±12130 | 190546±13642 | 454803±21936 | 429710±13751 | 41482±1392 |
-| messageOneArgumentInTheStart    | 2 | 6 | ops/s | 460164±11014 | 186111±15280 | 444657±2332 | 417252±8034 | 40407±1313 |
-| messageTwoArgumentInTheEnd      | 2 | 6 | ops/s | 449377±9286 | 178412±26319 | 440259±3819 | 371821±25846 | 40151±716 |
-| messageTwoArgumentInTheMiddle   | 2 | 6 | ops/s | 437624±4854 | 182567±17643 | 439746±12459 | 409443±10546 | 40756±690 |
-| messageTwoArgumentInTheStart    | 2 | 6 | ops/s | 433289±16436 | 181263±22115 | 433450±21592 | 387061±7459 | 40064±503 |
-| messageThreeArgumentInTheEnd    | 2 | 6 | ops/s | 435443±14175 | 179582±21615 | 427762±34262 | 393146±8272 | 40407±1313 |
-| messageThreeArgumentInTheMiddle | 2 | 6 | ops/s | 434948±25266 | 184036±20658 | 420698±32571 | 378362±15518 | 40150±681 |
-| messageThreeArgumentInTheStart  | 2 | 6 | ops/s | 441791±26952 | 183132±10275 | 422269±32483 | 398629±7963 | 39304±988 |
+| messageAndStacktrace            | 2 | 6 | ops/s | 118216±813 | 13338±223 | 115822±428 | 104783±501 | 40445±203 |
+| messageWithoutArguments         | 2 | 6 | ops/s | 499217±1199 | 175836±1835 | 473321±5493 | 417106±6782 | 43540±467 |
+| messageOneArgumentInTheEnd      | 2 | 6 | ops/s | 458897±4559 | 169457±3192 | 443582±2258 | 400907±5836 | 40692±811 |
+| messageOneArgumentInTheMiddle   | 2 | 6 | ops/s | 473144±13985 | 173946±1803 | 451131±15834 | 422485±5795 | 40464±552 |
+| messageOneArgumentInTheStart    | 2 | 6 | ops/s | 460671±4028 | 173542±2095 | 432312±2706 | 406973±6916 | 41138±587 |
+| messageTwoArgumentInTheEnd      | 2 | 6 | ops/s | 452458±6389 | 164550±3379 | 444213±3966 | 397294±7014 | 40661±531 |
+| messageTwoArgumentInTheMiddle   | 2 | 6 | ops/s | 432949±5454 | 168683±1862 | 442847±5500 | 390417±3958 | 41380±403 |
+| messageTwoArgumentInTheStart    | 2 | 6 | ops/s | 448363±4246 | 167334±2699 | 440998±4881 | 392745±10002 | 39528±231 |
+| messageThreeArgumentInTheEnd    | 2 | 6 | ops/s | 423541±3972 | 169260±1842 | 426526±5837 | 396242±8698 | 40128±464 |
+| messageThreeArgumentInTheMiddle | 2 | 6 | ops/s | 430087±2801 | 167569±9936 | 409115±3378 | 392355±5064 | 40184±244 |
+| messageThreeArgumentInTheStart  | 2 | 6 | ops/s | 425695±2946 | 168490±848 | 422243±7029 | 373625±6822 | 39986±586 |
 
-You can check [results by yourself](https://github.com/GoodforGod/java-logger-benchmark/actions/runs/1989473193).
+You can validate [results yourself](https://github.com/GoodforGod/java-logger-benchmark/actions/runs/2004818675).
+
+#### Processed Results
+
+If we take [goodforgod-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) as baseline and compute other loggers performance based on numbers above:
+
+| Benchmark                       | goodforgod-simple | logback | log4j | slf4j-simple | java-system |
+| ------------------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
+| messageAndStacktrace            | 100               | 98.0    | 88.6  | 11.3         | 34.2        |
+| messageWithoutArguments         | 100               | 94.8    | 83.6  | 35.2         | 8.7         |
+| messageOneArgumentInTheEnd      | 100               | 96.7    | 87.4  | 36.9         | 8.9         |
+| messageOneArgumentInTheMiddle   | 100               | 95.3    | 89.3  | 36.8         | 8.6         |
+| messageOneArgumentInTheStart    | 100               | 93.8    | 88.3  | 37.7         | 8.9         |
+| messageTwoArgumentInTheEnd      | 100               | 98.2    | 87.8  | 36.4         | 9.0         |
+| messageTwoArgumentInTheMiddle   | 100               | 102.3   | 90.2  | 39.0         | 9.6         |
+| messageTwoArgumentInTheStart    | 100               | 98.4    | 87.6  | 37.3         | 8.8         |
+| messageThreeArgumentInTheEnd    | 100               | 100.7   | 93.6  | 40.0         | 9.5         |
+| messageThreeArgumentInTheMiddle | 100               | 95.1    | 91.2  | 39.0         | 9.3         |
+| messageThreeArgumentInTheStart  | 100               | 99.2    | 87.8  | 39.6         | 9.4         |
 
 ### Setup 2
 
@@ -71,6 +91,8 @@ Benchmark setup configuration:
 - Processor: AMD Ryzen 2600X
 - Java: OpenJDK 64-Bit Server VM (build 17+35-2724, mixed mode, sharing)
 - Execution: *java -jar benchmark-name.jar 2>NUL*
+- 
+#### Raw Results
 
 | Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
 |---|---|---|---|---|---|---|---|---|
@@ -86,6 +108,24 @@ Benchmark setup configuration:
 | messageThreeArgumentInTheMiddle | 2 | 6 | ops/s | 96524±10997 | 38981±3724 | 90234±1231 | 89083±11264 | 30155±409 |
 | messageThreeArgumentInTheStart  | 2 | 6 | ops/s | 125277±10888 | 40526±13953 | 83704±1428 | 86095±2454 | 29521±311 |
 
+#### Processed Results
+
+If we take [goodforgod-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) as baseline and compute other loggers performance based on numbers above:
+
+| Benchmark                       | goodforgod-simple | logback | log4j | slf4j-simple | java-system |
+| ------------------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
+| messageAndStacktrace            | 100               | 93.0    | 74.5  | 4.6          | 38.7        |
+| messageWithoutArguments         | 100               | 84.7    | 74.4  | 26.8         | 26.6        |
+| messageOneArgumentInTheEnd      | 100               | 79.9    | 74.9  | 37.3         | 25.6        |
+| messageOneArgumentInTheMiddle   | 100               | 59.5    | 65.3  | 29.2         | 22.0        |
+| messageOneArgumentInTheStart    | 100               | 87.8    | 92.4  | 41.5         | 30.3        |
+| messageTwoArgumentInTheEnd      | 100               | 89.3    | 92.1  | 46.2         | 30.7        |
+| messageTwoArgumentInTheMiddle   | 100               | 84.7    | 94.5  | 41.2         | 29.6        |
+| messageTwoArgumentInTheStart    | 100               | 94.5    | 88.4  | 49.7         | 30.0        |
+| messageThreeArgumentInTheEnd    | 100               | 92.1    | 90.6  | 47.3         | 29.8        |
+| messageThreeArgumentInTheMiddle | 100               | 93.5    | 92.3  | 40.4         | 31.2        |
+| messageThreeArgumentInTheStart  | 100               | 66.8    | 68.7  | 32.3         | 23.6        |
+
 ### Setup 3
 
 This benchmark **have forwarded stderr to NUL** *(/dev/null analog in windows)*
@@ -93,8 +133,10 @@ This benchmark **have forwarded stderr to NUL** *(/dev/null analog in windows)*
 Benchmark setup configuration:
 - OS: Windows 10
 - Processor: Intel i5-6200U
-- Java: 
+- Java: OpenJDK 64-Bit Server VM (build 17.0.1+12-39, mixed mode, sharing)
 - Execution: *java -jar benchmark-name.jar 2>NUL*
+
+#### Raw Results
 
 | Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
 |---|---|---|---|---|---|---|---|---|
@@ -110,6 +152,23 @@ Benchmark setup configuration:
 | messageThreeArgumentInTheMiddle | 2 | 6 | ops/s | 74463±1725 | 30986±4792 | 69847±1797 | 66406±1474 | 20311±333 |
 | messageThreeArgumentInTheStart  | 2 | 6 | ops/s | 75444±1727 | 30203±4660 | 68149±3567 | 66786±1621 | 20280±315 |
 
+#### Processed Results
+
+If we take [goodforgod-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) as baseline and compute other loggers performance based on numbers above:
+
+| Benchmark                       | goodforgod-simple | logback | log4j | slf4j-simple | java-system |
+| ------------------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
+| messageAndStacktrace            | 100               | 68.3    | 63.5  | 4.6          | 34.4        |
+| messageWithoutArguments         | 100               | 93.5    | 91.3  | 42.7         | 25.9        |
+| messageOneArgumentInTheEnd      | 100               | 93.3    | 89.9  | 42.8         | 27.0        |
+| messageOneArgumentInTheMiddle   | 100               | 94.8    | 87.3  | 41.2         | 26.7        |
+| messageOneArgumentInTheStart    | 100               | 91.1    | 91.1  | 42.5         | 27.4        |
+| messageTwoArgumentInTheEnd      | 100               | 89.0    | 87.6  | 43.5         | 27.2        |
+| messageTwoArgumentInTheMiddle   | 100               | 92.0    | 91.5  | 40.1         | 26.8        |
+| messageTwoArgumentInTheStart    | 100               | 90.7    | 89.3  | 45.4         | 26.7        |
+| messageThreeArgumentInTheEnd    | 100               | 87.5    | 88.0  | 40.5         | 26.8        |
+| messageThreeArgumentInTheMiddle | 100               | 93.8    | 89.2  | 41.6         | 27.3        |
+| messageThreeArgumentInTheStart  | 100               | 90.3    | 88.5  | 40.0         | 26.9        |
 
 ## Run
 
