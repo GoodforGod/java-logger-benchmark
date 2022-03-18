@@ -98,17 +98,17 @@ Benchmark setup configuration:
 
 | Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
 |---|---|---|---|---|---|---|---|---|
-| messageAndStacktrace            | 2 | 6 | ops/s |  |  |  |  |  |
-| messageWithoutArguments         | 2 | 6 | ops/s |  |  |  |  |  |
-| messageOneArgumentInTheEnd      | 2 | 6 | ops/s |  |  |  |  |  |
-| messageOneArgumentInTheMiddle   | 2 | 6 | ops/s |  |  |  |  |  |
-| messageOneArgumentInTheStart    | 2 | 6 | ops/s |  |  |  |  |  |
-| messageTwoArgumentInTheEnd      | 2 | 6 | ops/s |  |  |  |  |  |
-| messageTwoArgumentInTheMiddle   | 2 | 6 | ops/s |  |  |  |  |  |
-| messageTwoArgumentInTheStart    | 2 | 6 | ops/s |  |  |  |  |  |
-| messageThreeArgumentInTheEnd    | 2 | 6 | ops/s |  |  |  |  |  |
-| messageThreeArgumentInTheMiddle | 2 | 6 | ops/s |  |  |  |  |  |
-| messageThreeArgumentInTheStart  | 2 | 6 | ops/s |  |  |  |  |  |
+| messageAndStacktrace            | 2 | 6 | ops/s | 44741±1227 | 2074±166 | 30574±551 | 28409±718 | 15384±161 |
+| messageWithoutArguments         | 2 | 6 | ops/s | 77648±2357 | 33142±4502 | 72632±2107 | 70858±4008 | 20126±5878 |
+| messageOneArgumentInTheEnd      | 2 | 6 | ops/s | 75533±4976 | 32307±12165 | 70459±1576 | 67934±3651 | 20420±693 |
+| messageOneArgumentInTheMiddle   | 2 | 6 | ops/s | 75453±8568 | 31073±6345 | 71517±3054 | 65894±6387 | 20141±585 |
+| messageOneArgumentInTheStart    | 2 | 6 | ops/s | 73486±15079 | 31229±7186 | 66942±2062 | 66961±1409 | 20163±276 |
+| messageTwoArgumentInTheEnd      | 2 | 6 | ops/s | 75008±1818 | 32632±448 | 66768±4096 | 65697±1048 | 20421±265 |
+| messageTwoArgumentInTheMiddle   | 2 | 6 | ops/s | 75396±1473 | 30265±3249 | 69392±7265 | 68996±4110 | 20178±344 |
+| messageTwoArgumentInTheStart    | 2 | 6 | ops/s | 75785±2851 | 34428±996 | 68737±4562 | 67683±1720 | 20206±239 |
+| messageThreeArgumentInTheEnd    | 2 | 6 | ops/s | 75579±4230 | 30621±5432 | 66103±2858 | 66542±2149 | 20232±371 |
+| messageThreeArgumentInTheMiddle | 2 | 6 | ops/s | 74463±1725 | 30986±4792 | 69847±1797 | 66406±1474 | 20311±333 |
+| messageThreeArgumentInTheStart  | 2 | 6 | ops/s | 75444±1727 | 30203±4660 | 68149±3567 | 66786±1621 | 20280±315 |
 
 
 ## Run
