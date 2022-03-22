@@ -6,6 +6,17 @@ JMH Benchmark for different Java Logger implementations.
 
 Benchmark was initially created to test my [slf4j-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) implementation vs original [slf4j-simple-logger](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html).
 
+## Loggers
+
+Benchmark features these loggers:
+- [io.goodforgod:slf4j-simple-logger:0.13.0](https://github.com/GoodforGod/slf4j-simple-logger)
+- [org.slf4j:slf4j-simple:1.7.36](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html)
+- [ch.qos.logback:logback-classic:1.2.11](https://logback.qos.ch/)
+- [org.apache.logging.log4j:log4j-core:2.17.2](https://logging.apache.org/log4j/2.x/index.html)
+- [System.Logger](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) (Java 17)
+
+All loggers are configured to output to *STDERR*.
+
 ## Benchmark
 
 All loggers use synchronous output, **without any async appending mechanism**.
@@ -23,9 +34,21 @@ Benchmark consists of different common logging scenarios that developers typical
 - messageThreeArgumentInTheMiddle
 - messageThreeArgumentInTheStart
 
-If you want to look at details, you can [check it here](https://github.com/GoodforGod/java-logger-benchmark/tree/master/benchmark/src/main/java/io/goodforgod/benchmark).
+Here are corresponding examples of resulted log messages (excluding *messageAndStacktrace* due to big stacktrace):
+```text
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - Message is printed for this logger without arguments
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - Message is printed for this logger and with the argument: FirstArgument
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - Message is printed for FirstArgument argument for this logger
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - FirstArgument argument and message is printed for this logger
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - Message is printed for this logger and with arguments FirstArgument and SecondArgument
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - Message is printed for FirstArgument and SecondArgument argument for this logger
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - FirstArgument and SecondArgument arguments and message is printed for this logger
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - Message is printed for this logger and with arguments FirstArgument and SecondArgument and ThirdArgument
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - Message is printed for FirstArgument and SecondArgument and ThirdArgument argument for this logger
+2022-03-22T15:33:48.723 [INFO] io.goodforgod.benchmark.LoggerBenchmark - FirstArgument and SecondArgument and ThirdArgument argument and message is printed for this logger
+```
 
-All loggers are configured to output to STDERR.
+If you want to look at benchmark details, you can [check it here](https://github.com/GoodforGod/java-logger-benchmark/tree/master/benchmark/src/main/java/io/goodforgod/benchmark).
 
 JMH precaution:
 ```text
@@ -48,7 +71,7 @@ Benchmark setup configuration:
 
 #### Raw Results
 
-| Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
+| Benchmark | Warmup | Runs | Units | [goodforgod-simple](https://github.com/GoodforGod/slf4j-simple-logger) | [slf4j-simple](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html) | [logback](https://logback.qos.ch/) | [log4j](https://logging.apache.org/log4j/2.x/index.html) | [java-system](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) |
 |---|---|---|---|---|---|---|---|---|
 | messageAndStacktrace            | 2 | 6 | ops/s | 118216±813 | 13338±223 | 115822±428 | 104783±501 | 40445±203 |
 | messageWithoutArguments         | 2 | 6 | ops/s | 499217±1199 | 175836±1835 | 473321±5493 | 417106±6782 | 43540±467 |
@@ -68,7 +91,7 @@ You can validate [results yourself](https://github.com/GoodforGod/java-logger-be
 
 If we take [goodforgod-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) as baseline and compute other loggers performance based on numbers above:
 
-| Benchmark                       | goodforgod-simple | logback | log4j | slf4j-simple | java-system |
+| Benchmark                       | [goodforgod-simple](https://github.com/GoodforGod/slf4j-simple-logger) | [slf4j-simple](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html) | [logback](https://logback.qos.ch/) | [log4j](https://logging.apache.org/log4j/2.x/index.html) | [java-system](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) |
 | ------------------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
 | messageAndStacktrace            | 100               | 98.0    | 88.6  | 11.3         | 34.2        |
 | messageWithoutArguments         | 100               | 94.8    | 83.6  | 35.2         | 8.7         |
@@ -91,10 +114,10 @@ Benchmark setup configuration:
 - Processor: AMD Ryzen 2600X
 - Java: OpenJDK 64-Bit Server VM (build 17+35-2724, mixed mode, sharing)
 - Execution: *java -jar benchmark-name.jar 2>NUL*
-- 
+
 #### Raw Results
 
-| Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
+| Benchmark | Warmup | Runs | Units | [goodforgod-simple](https://github.com/GoodforGod/slf4j-simple-logger) | [slf4j-simple](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html) | [logback](https://logback.qos.ch/) | [log4j](https://logging.apache.org/log4j/2.x/index.html) | [java-system](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) |
 |---|---|---|---|---|---|---|---|---|
 | messageAndStacktrace            | 2 | 6 | ops/s | 58718±669 | 2684±142 | 54617±240 | 43765±605 | 22721±262 |
 | messageWithoutArguments         | 2 | 6 | ops/s | 120257±34208 | 32231±4528 | 101818±5985 | 89485±12457 | 31956±747 |
@@ -112,7 +135,7 @@ Benchmark setup configuration:
 
 If we take [goodforgod-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) as baseline and compute other loggers performance based on numbers above:
 
-| Benchmark                       | goodforgod-simple | logback | log4j | slf4j-simple | java-system |
+| Benchmark                       | [goodforgod-simple](https://github.com/GoodforGod/slf4j-simple-logger) | [slf4j-simple](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html) | [logback](https://logback.qos.ch/) | [log4j](https://logging.apache.org/log4j/2.x/index.html) | [java-system](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) |
 | ------------------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
 | messageAndStacktrace            | 100               | 93.0    | 74.5  | 4.6          | 38.7        |
 | messageWithoutArguments         | 100               | 84.7    | 74.4  | 26.8         | 26.6        |
@@ -138,7 +161,7 @@ Benchmark setup configuration:
 
 #### Raw Results
 
-| Benchmark | Warmup | Runs | Units | goodforgod-simple | slf4j-simple | logback | log4j | java-system |
+| Benchmark | Warmup | Runs | Units | [goodforgod-simple](https://github.com/GoodforGod/slf4j-simple-logger) | [slf4j-simple](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html) | [logback](https://logback.qos.ch/) | [log4j](https://logging.apache.org/log4j/2.x/index.html) | [java-system](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) |
 |---|---|---|---|---|---|---|---|---|
 | messageAndStacktrace            | 2 | 6 | ops/s | 44741±1227 | 2074±166 | 30574±551 | 28409±718 | 15384±161 |
 | messageWithoutArguments         | 2 | 6 | ops/s | 77648±2357 | 33142±4502 | 72632±2107 | 70858±4008 | 20126±5878 |
@@ -156,7 +179,7 @@ Benchmark setup configuration:
 
 If we take [goodforgod-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) as baseline and compute other loggers performance based on numbers above:
 
-| Benchmark                       | goodforgod-simple | logback | log4j | slf4j-simple | java-system |
+| Benchmark                       | [goodforgod-simple](https://github.com/GoodforGod/slf4j-simple-logger) | [slf4j-simple](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html) | [logback](https://logback.qos.ch/) | [log4j](https://logging.apache.org/log4j/2.x/index.html) | [java-system](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) |
 | ------------------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
 | messageAndStacktrace            | 100               | 68.3    | 63.5  | 4.6          | 34.4        |
 | messageWithoutArguments         | 100               | 93.5    | 91.3  | 42.7         | 25.9        |
