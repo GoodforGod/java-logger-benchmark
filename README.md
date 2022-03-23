@@ -105,6 +105,14 @@ If we take [goodforgod-simple-logger](https://github.com/GoodforGod/slf4j-simple
 | messageThreeArgumentInTheMiddle | 100               | 95.1    | 91.2  | 39.0         | 9.3         |
 | messageThreeArgumentInTheStart  | 100               | 99.2    | 87.8  | 39.6         | 9.4         |
 
+
+If we shrink results even more and compute average for all messages with arguments as single result then:
+
+| Benchmark              | [goodforgod-simple](https://github.com/GoodforGod/slf4j-simple-logger) | [logback](https://logback.qos.ch/) | [log4j](https://logging.apache.org/log4j/2.x/index.html) | [slf4j-simple](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html) | [java-system](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) |
+| ---------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
+| message and stacktrace | 100               | 98.0    | 88.6  | 11.3         | 34.2        |
+| message with arguments | 100               | 97.5    | 88.7  | 37.8         | 9.1         |
+
 ### Setup 2
 
 This benchmark **have forwarded stderr to NUL** *(/dev/null analog in windows)*
@@ -148,6 +156,14 @@ If we take [goodforgod-simple-logger](https://github.com/GoodforGod/slf4j-simple
 | messageThreeArgumentInTheEnd    | 100               | 92.1    | 90.6  | 47.3         | 29.8        |
 | messageThreeArgumentInTheMiddle | 100               | 93.5    | 92.3  | 40.4         | 31.2        |
 | messageThreeArgumentInTheStart  | 100               | 66.8    | 68.7  | 32.3         | 23.6        |
+
+
+If we shrink results even more and compute average for all messages with arguments as single result then:
+
+| Benchmark              | [goodforgod-simple](https://github.com/GoodforGod/slf4j-simple-logger) | [logback](https://logback.qos.ch/) | [log4j](https://logging.apache.org/log4j/2.x/index.html) | [slf4j-simple](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html) | [java-system](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) |
+| ---------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
+| message and stacktrace | 100               | 93.0    | 74.5  | 4.6          | 38.7        |
+| message with arguments | 100               | 83.3    | 83.3  | 39.2         | 27.9        |
 
 ### Setup 3
 
@@ -193,6 +209,14 @@ If we take [goodforgod-simple-logger](https://github.com/GoodforGod/slf4j-simple
 | messageThreeArgumentInTheMiddle | 100               | 93.8    | 89.2  | 41.6         | 27.3        |
 | messageThreeArgumentInTheStart  | 100               | 90.3    | 88.5  | 40.0         | 26.9        |
 
+
+If we shrink results even more and compute average for all messages with arguments as single result then:
+
+| Benchmark              | [goodforgod-simple](https://github.com/GoodforGod/slf4j-simple-logger) | [logback](https://logback.qos.ch/) | [log4j](https://logging.apache.org/log4j/2.x/index.html) | [slf4j-simple](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html) | [java-system](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) |
+| ---------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
+| message and stacktrace | 100               | 68.3    | 63.5  | 4.6          | 34.4        |
+| message with arguments | 100               | 91.6    | 89.4  | 42.0         | 26.9        |
+
 ## Run
 
 In case you want to try benchmark yourself, then you should compile and package all benchmarks first:
@@ -214,7 +238,7 @@ java -jar goodforgod-simple-logger/build/libs/*all.jar 2>/dev/null
 
 You can configure the number of *warmup* and *iterations* with command line arguments, the first argument corresponds to warmups and second is for iterations:
 
-Example below will run 1 warmup and 1 iteration:
+Example below will run 1 warmup and 2 iteration:
 ```shell
-java -jar goodforgod-simple-logger/build/libs/*all.jar 1 1
+java -jar goodforgod-simple-logger/build/libs/*all.jar 1 2
 ```
