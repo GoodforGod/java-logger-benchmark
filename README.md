@@ -236,9 +236,12 @@ java -jar goodforgod-simple-logger/build/libs/*all.jar 2>/dev/null
 
 ### Configuration
 
-You can configure the number of *warmup* and *iterations* with command line arguments, the first argument corresponds to warmups and second is for iterations:
+You can configure the number of *warmup*, *iterations* and *threads* with command line arguments:
+- First argument is for warmups.
+- Second is for iterations.
+- Third is for threads.
 
-Example below will run 1 warmup and 2 iteration:
+Example below will run 1 warmup and 2 iteration and 3 threads:
 ```shell
-java -jar goodforgod-simple-logger/build/libs/*all.jar 1 2
+java -jar goodforgod-simple-logger/build/libs/*all.jar 1 2 3
 ```
