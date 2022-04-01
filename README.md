@@ -4,7 +4,9 @@
 
 JMH Benchmark for different Java Logger implementations.
 
-Benchmark was initially created to test my [slf4j-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) implementation vs original [slf4j-simple-logger](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html).
+Idea behind this benchmark is to put all loggers in the same conditions and measure 
+how they all handle the most common scenarios developers use and compare their implementation in such scenarios. 
+At the end it is your choice to make, do you want performance or flexibility some loggers provide and what are trade-offs.
 
 ## Loggers
 
@@ -15,7 +17,20 @@ Benchmark features these loggers:
 - [org.apache.logging.log4j:log4j-core:2.17.2](https://logging.apache.org/log4j/2.x/index.html)
 - [System.Logger](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) (Java 17)
 
-All loggers are configured to output to *STDERR*.
+All loggers are configured to output to *STDERR* on purpose.
+All loggers are configured to use the same output layout.
+
+Pseudo layout for all loggers:
+
+`{date} [{level}] {logger} - {message}{separator}{throwable with stacktrace}`
+
+Description of layout:
+- date - uses formatter `yyyy-MM-dd'T'HH:mm:ss.SSS`
+- level - logging level
+- logger - logger full class name
+- message - logging message
+- separator - new line to separate logging messages
+- stacktrace - exception stacktrace
 
 ## Benchmark
 
