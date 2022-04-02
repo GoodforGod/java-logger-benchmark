@@ -18,8 +18,8 @@ abstract class LoggerBenchmark {
     }
 
     protected static Options getBenchmarkOptions(Class<?> benchType, String[] args) {
-        final int iterations = getNumberOfIterations(args);
         final int warmup = getNumberOfWarmup(args);
+        final int iterations = getNumberOfIterations(args);
         final int threads = getNumberOfThreads(args);
 
         System.out.println("Number of Warmup: " + warmup + ", Iterations: " + iterations + ", Threads: " + threads);
@@ -34,16 +34,16 @@ abstract class LoggerBenchmark {
                 .build();
     }
 
-    private static int getNumberOfIterations(String[] args) {
+    private static int getNumberOfWarmup(String[] args) {
         return args.length > 0
                 ? Integer.parseInt(args[0])
-                : 6;
+                : 2;
     }
 
-    private static int getNumberOfWarmup(String[] args) {
+    private static int getNumberOfIterations(String[] args) {
         return args.length > 1
                 ? Integer.parseInt(args[1])
-                : 2;
+                : 6;
     }
 
     private static int getNumberOfThreads(String[] args) {
