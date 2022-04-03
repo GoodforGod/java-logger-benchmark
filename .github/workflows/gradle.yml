@@ -16,7 +16,7 @@ on:
 
 
 jobs:
-  sync:
+  sync-single-thread:
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 1
@@ -61,6 +61,7 @@ jobs:
       matrix:
         java: [ '17' ]
     name: Sync Multi-Thread Benchmark
+    needs: sync-single-thread
 
     steps:
       - uses: actions/checkout@v1
