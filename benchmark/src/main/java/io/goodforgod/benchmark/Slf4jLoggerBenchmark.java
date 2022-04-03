@@ -36,58 +36,79 @@ public abstract class Slf4jLoggerBenchmark extends LoggerBenchmark {
     }
 
     @Benchmark
-    public void messageOneArgumentInTheEnd() {
-        logger.info("Message is printed for this logger and with the argument: {}", arg1);
+    public void messageOneArgumentInEnd() {
+        logger.info(
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios with arguments {}",
+                arg1);
     }
 
     @Benchmark
-    public void messageTwoArgumentInTheEnd() {
-        logger.info("Message is printed for this logger and with arguments {} and {}", arg1, arg2);
+    public void messageTwoArgumentInEnd() {
+        logger.info(
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios with arguments {} and {}",
+                arg1, arg2);
     }
 
     @Benchmark
-    public void messageThreeArgumentInTheEnd() {
-        logger.info("Message is printed for this logger and with arguments {} and {} and {}", arg1, arg2, arg3);
+    public void messageThreeArgumentInEnd() {
+        logger.info(
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios with arguments {} and {} and {}",
+                arg1, arg2, arg3);
     }
 
     @Benchmark
-    public void messageOneArgumentInTheStart() {
-        logger.info("{} argument and message is printed for this logger", arg1);
+    public void messageOneArgumentInStart() {
+        logger.info(
+                "{} arguments of this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios",
+                arg1);
     }
 
     @Benchmark
-    public void messageTwoArgumentInTheStart() {
-        logger.info("{} and {} arguments and message is printed for this logger", arg1, arg2);
+    public void messageTwoArgumentInStart() {
+        logger.info(
+                "{} and {} arguments of this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios",
+                arg1, arg2);
     }
 
     @Benchmark
-    public void messageThreeArgumentInTheStart() {
-        logger.info("{} and {} and {} argument and message is printed for this logger", arg1, arg2, arg3);
+    public void messageThreeArgumentInStart() {
+        logger.info(
+                "{} and {} and {} arguments of this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios",
+                arg1, arg2, arg3);
     }
 
     @Benchmark
-    public void messageOneArgumentInTheMiddle() {
-        logger.info("Message is printed for {} argument for this logger", arg1);
+    public void messageOneArgumentInMiddle() {
+        logger.info(
+                "this long message is supposed to represent logging message with arguments {} most developers use in their daily routing to represent most common scenarios",
+                arg1);
     }
 
     @Benchmark
-    public void messageTwoArgumentInTheMiddle() {
-        logger.info("Message is printed for {} and {} argument for this logger", arg1, arg2);
+    public void messageTwoArgumentInMiddle() {
+        logger.info(
+                "this long message is supposed to represent logging message with arguments {} and {} most developers use in their daily routing to represent most common scenarios",
+                arg1, arg2);
     }
 
     @Benchmark
-    public void messageThreeArgumentInTheMiddle() {
-        logger.info("Message is printed for {} and {} and {} argument for this logger", arg1, arg2, arg3);
+    public void messageThreeArgumentInMiddle() {
+        logger.info(
+                "this long message is supposed to represent logging message with arguments {} and {} and {} most developers use in their daily routing to represent most common scenarios",
+                arg1, arg2, arg3);
     }
 
     @Benchmark
     public void messageWithoutArguments() {
-        logger.info("Message is printed for this logger without arguments");
+        logger.info(
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios without arguments");
     }
 
     @Benchmark
     public void messageAndStacktrace() {
-        logger.info("Message is printed for this logger and there is stacktrace", exception);
+        logger.info(
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios with stacktrace",
+                exception);
     }
 
     // cause we need stacktrace

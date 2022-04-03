@@ -33,61 +33,79 @@ public abstract class SystemLoggerBenchmark extends LoggerBenchmark {
     }
 
     @Benchmark
-    public void messageOneArgumentInTheEnd() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for this logger and with the argument: {0}", arg1);
+    public void messageOneArgumentInEnd() {
+        logger.log(System.Logger.Level.INFO,
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios with arguments {0}",
+                arg1);
     }
 
     @Benchmark
-    public void messageTwoArgumentInTheEnd() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for this logger and with arguments {0} and {1}", arg1, arg2);
+    public void messageTwoArgumentInEnd() {
+        logger.log(System.Logger.Level.INFO,
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios with arguments {0} and {1}",
+                arg1, arg2);
     }
 
     @Benchmark
-    public void messageThreeArgumentInTheEnd() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for this logger and with arguments {0} and {1} and {2}",
+    public void messageThreeArgumentInEnd() {
+        logger.log(System.Logger.Level.INFO,
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios with arguments {0} and {1} and {2}",
                 arg1, arg2, arg3);
     }
 
     @Benchmark
-    public void messageOneArgumentInTheStart() {
-        logger.log(System.Logger.Level.INFO, "{0} argument and message is printed for this logger", arg1);
+    public void messageOneArgumentInStart() {
+        logger.log(System.Logger.Level.INFO,
+                "{0} arguments of this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios",
+                arg1);
     }
 
     @Benchmark
-    public void messageTwoArgumentInTheStart() {
-        logger.log(System.Logger.Level.INFO, "{0} and {1} arguments and message is printed for this logger", arg1, arg2);
+    public void messageTwoArgumentInStart() {
+        logger.log(System.Logger.Level.INFO,
+                "{0} and {1} arguments of this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios",
+                arg1, arg2);
     }
 
     @Benchmark
-    public void messageThreeArgumentInTheStart() {
-        logger.log(System.Logger.Level.INFO, "{0} and {1} and {2} argument and message is printed for this logger", arg1,
-                arg2, arg3);
+    public void messageThreeArgumentInStart() {
+        logger.log(System.Logger.Level.INFO,
+                "{0} and {1} and {2} arguments of this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios",
+                arg1, arg2, arg3);
     }
 
     @Benchmark
-    public void messageOneArgumentInTheMiddle() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for {0} argument for this logger", arg1);
+    public void messageOneArgumentInMiddle() {
+        logger.log(System.Logger.Level.INFO,
+                "this long message is supposed to represent logging message with arguments {0} most developers use in their daily routing to represent most common scenarios",
+                arg1);
     }
 
     @Benchmark
-    public void messageTwoArgumentInTheMiddle() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for {0} and {1} argument for this logger", arg1, arg2);
+    public void messageTwoArgumentInMiddle() {
+        logger.log(System.Logger.Level.INFO,
+                "this long message is supposed to represent logging message with arguments {0} and {1} most developers use in their daily routing to represent most common scenarios",
+                arg1, arg2);
     }
 
     @Benchmark
-    public void messageThreeArgumentInTheMiddle() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for {0} and {1} and {2} argument for this logger", arg1,
-                arg2, arg3);
+    public void messageThreeArgumentInMiddle() {
+        logger.log(System.Logger.Level.INFO,
+                "this long message is supposed to represent logging message with arguments {0} and {1} and {2} most developers use in their daily routing to represent most common scenarios",
+                arg1, arg2, arg3);
     }
 
     @Benchmark
     public void messageWithoutArguments() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for this logger without arguments");
+        logger.log(System.Logger.Level.INFO,
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios without arguments");
     }
 
     @Benchmark
     public void messageAndStacktrace() {
-        logger.log(System.Logger.Level.INFO, "Message is printed for this logger and there is stacktrace", exception);
+        logger.log(System.Logger.Level.INFO,
+                "this long message is supposed to represent logging message most developers use in their daily routing to represent most common scenarios with stacktrace",
+                exception);
     }
 
     // cause we need stacktrace
