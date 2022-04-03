@@ -17,24 +17,23 @@ Benchmark features these loggers:
 - [org.apache.logging.log4j:log4j-core:2.17.2](https://logging.apache.org/log4j/2.x/index.html)
 - [System.Logger](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) (Java 17)
 
-All loggers are configured to output to *STDERR* on purpose.
-All loggers are configured to use the same output layout.
-
-Pseudo layout for all loggers:
-
-`{date} [{level}] {logger} - {message}{separator}{throwable with stacktrace}`
-
-Description of layout:
-- date - uses formatter `yyyy-MM-dd'T'HH:mm:ss.SSS`
-- level - logging level
-- logger - logger full class name
-- message - logging message
-- separator - new line to separate logging messages
-- stacktrace - exception stacktrace
 
 ## Benchmark
 
 All loggers use synchronous output, **without any async appending mechanism**.
+All loggers are configured to output to *STDERR* on purpose.
+All loggers are configured to use identical output layout.
+
+Pseudo output layout for all loggers:
+`{date} [{level}] {logger} - {message}{separator}{stacktrace}`
+
+Description of output layout:
+- *{date}* - logging message datetime (uses formatter `yyyy-MM-dd'T'HH:mm:ss.SSS`)
+- *{level}* - logging level
+- *{logger}* - logger full class name
+- *{message}* - logging message content
+- *{separator}* - new line to separate logging messages
+- *{stacktrace}* - exception stacktrace if present
 
 Benchmark consists of different common logging scenarios that developers typically use in their applications, by the name of the test you can understand what this situation try to emulate, here is full list of tests:
 - messageAndStacktrace         

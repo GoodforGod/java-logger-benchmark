@@ -14,10 +14,12 @@ on:
       - master
       - dev
 
+
 jobs:
   sync:
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
         java: [ '17' ]
     name: Sync Single-Thread Benchmark
@@ -55,6 +57,7 @@ jobs:
   sync-multi-thread:
     runs-on: ubuntu-latest
     strategy:
+      max-parallel: 1
       matrix:
         java: [ '17' ]
     name: Sync Multi-Thread Benchmark
