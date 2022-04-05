@@ -39,19 +39,19 @@ jobs:
         run: ./gradlew shadowJar
 
       - name: Benchmark [goodforgod-simple-logger]
-        run: java -jar goodforgod-simple-logger/build/libs/*-all.jar 2>/dev/null 2 6
+        run: java -jar goodforgod-simple-logger/build/libs/*-all.jar 2>/dev/null 2 3
 
       - name: Benchmark [logback-logger]
-        run: java -jar logback-logger/build/libs/*-all.jar 2>/dev/null 2 6
+        run: java -jar logback-logger/build/libs/*-all.jar 2>/dev/null 2 3
 
       - name: Benchmark [log4j-logger]
-        run: java -jar log4j-logger/build/libs/*-all.jar 2>/dev/null 2 6
+        run: java -jar log4j-logger/build/libs/*-all.jar 2>/dev/null 2 3
 
       - name: Benchmark [slf4j-simple-logger]
-        run: java -jar slf4j-simple-logger/build/libs/*-all.jar 2>/dev/null 2 6
+        run: java -jar slf4j-simple-logger/build/libs/*-all.jar 2>/dev/null 2 3
 
       - name: Benchmark [system-logger]
-        run: java -jar system-logger/build/libs/*-all.jar 2>/dev/null 2 6
+        run: java -jar system-logger/build/libs/*-all.jar 2>/dev/null 2 3
 
 
   sync-multi-thread:
@@ -78,16 +78,16 @@ jobs:
         run: ./gradlew shadowJar
 
       - name: Benchmark [goodforgod-simple-logger]
-        run: java -jar goodforgod-simple-logger/build/libs/*-all.jar 2>/dev/null 2 6 500
+        run: java -jar goodforgod-simple-logger/build/libs/*-all.jar 2>/dev/null 2 3 500
 
       - name: Benchmark [logback-logger]
-        run: java -jar logback-logger/build/libs/*-all.jar 2>/dev/null 2 6 500
+        run: java -jar logback-logger/build/libs/*-all.jar 2>/dev/null 2 3 500
 
       - name: Benchmark [log4j-logger]
-        run: java -jar log4j-logger/build/libs/*-all.jar 2>/dev/null 2 6 500
+        run: java -jar log4j-logger/build/libs/*-all.jar 2>/dev/null 2 3 500
 
       - name: Benchmark [slf4j-simple-logger]
-        run: java -jar slf4j-simple-logger/build/libs/*-all.jar 2>/dev/null 2 6 500
+        run: java -jar slf4j-simple-logger/build/libs/*-all.jar 2>/dev/null 2 3 500
 
       - name: Benchmark [system-logger]
-        run: java -jar system-logger/build/libs/*-all.jar 2>/dev/null 2 6 500
+        run: java -jar system-logger/build/libs/*-all.jar 2>/dev/null 2 3 500
