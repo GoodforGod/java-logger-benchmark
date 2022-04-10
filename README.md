@@ -5,9 +5,9 @@
 JMH Benchmark for different Java Logger implementations.
 
 Idea of this benchmark is to put all loggers in the same conditions and measure how they all handle the most common scenarios. 
-Compare their implementation in such scenarios, some loggers have more flexible configurations, some have more features, some don't.
+Compare their implementation in such scenarios, some loggers have more flexible configurations, different APIs, some have more features, different implementations.
 
-At the end it is your choice to make, do you want performance or flexibility  some loggers provide and what are trade-offs.
+At the end it's your choice, do you want flexibility some loggers provide and what are trade-offs of each implementation.
 
 ## Loggers
 
