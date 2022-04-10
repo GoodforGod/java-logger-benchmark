@@ -4,9 +4,10 @@
 
 JMH Benchmark for different Java Logger implementations.
 
-Idea behind this benchmark is to put all loggers in the same conditions and measure 
-how they all handle the most common scenarios developers use and compare their implementation in such scenarios. 
-At the end it is your choice to make, do you want performance or flexibility some loggers provide and what are trade-offs.
+Idea of this benchmark is to put all loggers in the same conditions and measure how they all handle the most common scenarios. 
+Compare their implementation in such scenarios, some loggers have more flexible configurations, different APIs, some have more features, different implementations.
+
+At the end it's your choice, do you want flexibility some loggers provide and what are trade-offs of each implementation.
 
 ## Loggers
 
@@ -17,25 +18,9 @@ Benchmark features these loggers:
 - [org.apache.logging.log4j:log4j-core:2.17.2](https://logging.apache.org/log4j/2.x/index.html)
 - [System.Logger](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) (Java 17)
 
-
 ## Benchmark
 
-All loggers use synchronous output, **without any async appending mechanism**.
-All loggers are configured to output to *STDERR* on purpose.
-All loggers are configured to use identical output layout.
-
-Pseudo output layout for all loggers:
-`{date} [{level}] {logger} - {message}{separator}{stacktrace}`
-
-Description of output layout:
-- *{date}* - logging message datetime (uses formatter `yyyy-MM-dd'T'HH:mm:ss.SSS`)
-- *{level}* - logging level
-- *{logger}* - logger full class name
-- *{message}* - logging message content
-- *{separator}* - new line to separate logging messages
-- *{stacktrace}* - exception stacktrace if present
-
-Benchmark consists of different common logging scenarios that developers typically use in their applications, by the name of the test you can understand what this situation try to emulate, here is full list of tests:
+Benchmark consists of different common logging scenarios developers typically use in their applications, by the name of the test you can understand what this situation try to emulate, here is full list of tests:
 - messageAndStacktrace         
 - messageWithoutArguments       
 - messageOneArgumentInTheEnd    
@@ -63,6 +48,37 @@ Here are corresponding examples of resulted log messages (excluding *messageAndS
 ```
 
 If you want to look at benchmark details, you can [check it here](https://github.com/GoodforGod/java-logger-benchmark/tree/master/benchmark/src/main/java/io/goodforgod/benchmark).
+
+### Layout
+
+All loggers participants are configured to the same layout, so the all participants will be in equal conditions.
+
+Pseudo layout for all loggers:
+
+`{date} [{level}] {logger} - {message}{separator}{stacktrace}`
+
+- *{date}* - logging message datetime (uses formatter `yyyy-MM-dd'T'HH:mm:ss.SSS`)
+- *{level}* - logging level
+- *{logger}* - logger full class name
+- *{message}* - logging message content
+- *{separator}* - new line to separate logging messages
+- *{stacktrace}* - exception stacktrace if present
+
+### Configuration
+
+All loggers use synchronous output, **without any async appending mechanism**.
+
+All loggers are configured to output to *STDERR*.
+
+Benchmark emulates real world usage of loggers, same way logger will be used in real running application.
+To achieve this, benchmark uses real IO output for loggers, but to mitigate IO of the specific machine and console output,
+all loggers output is redirected to /dev/null.
+This is done to benchmark how loggers are working in real environment including IO interactions and avoid benchmarking how machine prints data to STDOUT where benchmark is running at.
+
+Loggers have different implementations and such huge performance gaps (as seen by results) occur mostly due to some loggers accessing IO more frequently than others.
+So measuring IO interactions is indented and critical to receive real world insights.
+
+## Setups
 
 JMH precaution:
 ```text
