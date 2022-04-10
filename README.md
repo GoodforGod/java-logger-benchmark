@@ -7,7 +7,7 @@ JMH Benchmark for different Java Logger implementations.
 Idea of this benchmark is to put all loggers in the same conditions and measure how they all handle the most common scenarios. 
 Compare their implementation in such scenarios, some loggers have more flexible configurations, some have more features, some don't.
 
-At the end it is your choice to make, do you want performance or flexibility and what is the cost.
+At the end it is your choice to make, do you want performance or flexibility  some loggers provide and what are trade-offs.
 
 ## Loggers
 
@@ -48,6 +48,22 @@ Here are corresponding examples of resulted log messages (excluding *messageAndS
 ```
 
 If you want to look at benchmark details, you can [check it here](https://github.com/GoodforGod/java-logger-benchmark/tree/master/benchmark/src/main/java/io/goodforgod/benchmark).
+
+### Layout
+
+All loggers participants are configured to the same layout, so the all participants will be in equal conditions.
+
+Pseudo layout for all loggers:
+
+`{date} [{level}] {logger} - {message}{separator}{throwable with stacktrace}`
+
+Description of layout:
+- date - uses formatter `yyyy-MM-dd'T'HH:mm:ss.SSS`
+- level - logging level
+- logger - logger full class name
+- message - logging message
+- separator - new line to separate logging messages
+- stacktrace - exception stacktrace
 
 ### Configuration
 
