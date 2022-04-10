@@ -4,7 +4,10 @@
 
 JMH Benchmark for different Java Logger implementations.
 
-Benchmark was initially created to test my [slf4j-simple-logger](https://github.com/GoodforGod/slf4j-simple-logger) implementation vs original [slf4j-simple-logger](https://www.slf4j.org/api/org/slf4j/impl/SimpleLogger.html).
+Idea of this benchmark is to put all loggers in the same conditions and measure how they all handle the most common scenarios. 
+Compare their implementation in such scenarios, some loggers have more flexible configurations, some have more features, some don't.
+
+At the end it is your choice to make, do you want performance or flexibility and what is the cost.
 
 ## Loggers
 
@@ -15,13 +18,9 @@ Benchmark features these loggers:
 - [org.apache.logging.log4j:log4j-core:2.17.2](https://logging.apache.org/log4j/2.x/index.html)
 - [System.Logger](https://docs.oracle.com/javase/9/docs/api/java/lang/System.Logger.html) (Java 17)
 
-All loggers are configured to output to *STDERR*.
-
 ## Benchmark
 
-All loggers use synchronous output, **without any async appending mechanism**.
-
-Benchmark consists of different common logging scenarios that developers typically use in their applications, by the name of the test you can understand what this situation try to emulate, here is full list of tests:
+Benchmark consists of different common logging scenarios developers typically use in their applications, by the name of the test you can understand what this situation try to emulate, here is full list of tests:
 - messageAndStacktrace         
 - messageWithoutArguments       
 - messageOneArgumentInTheEnd    
@@ -49,6 +48,22 @@ Here are corresponding examples of resulted log messages (excluding *messageAndS
 ```
 
 If you want to look at benchmark details, you can [check it here](https://github.com/GoodforGod/java-logger-benchmark/tree/master/benchmark/src/main/java/io/goodforgod/benchmark).
+
+### Configuration
+
+All loggers use synchronous output, **without any async appending mechanism**.
+
+All loggers are configured to output to *STDERR*.
+
+Benchmark emulates real world usage of loggers, same way logger will be used in real running application.
+To achieve this, benchmark uses real IO output for loggers, but to mitigate IO of the specific machine and console output,
+all loggers output is redirected to /dev/null.
+This is done to benchmark how loggers are working in real environment including IO interactions and avoid benchmarking how machine prints data to STDOUT where benchmark is running at.
+
+Loggers have different implementations and such huge performance gaps (as seen by results) occur mostly due to some loggers accessing IO more frequently than others.
+So measuring IO interactions is indented and critical to receive real world insights.
+
+## Setups
 
 JMH precaution:
 ```text
