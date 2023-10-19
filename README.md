@@ -144,6 +144,8 @@ If we shrink results even more and compute average for all messages with argumen
 | message and stacktrace | 100               | 98.0    | 88.6  | 11.3         | 34.2        |
 | message with arguments | 100               | 97.5    | 88.7  | 37.8         | 9.1         |
 
+![Setup 1](docs/setup-1.png)
+
 ### Setup 2
 
 This benchmark **have forwarded stderr to NUL** *(/dev/null analog in windows)*
@@ -196,6 +198,8 @@ If we shrink results even more and compute average for all messages with argumen
 | message and stacktrace | 100               | 93.0    | 74.5  | 4.6          | 38.7        |
 | message with arguments | 100               | 83.3    | 83.3  | 39.2         | 27.9        |
 
+![Setup 2](docs/setup-2.png)
+
 ### Setup 3
 
 This benchmark **have forwarded stderr to NUL** *(/dev/null analog in windows)*
@@ -247,6 +251,8 @@ If we shrink results even more and compute average for all messages with argumen
 | ---------------------- | ----------------- | ------- | ----- | ------------ | ----------- |
 | message and stacktrace | 100               | 68.3    | 63.5  | 4.6          | 34.4        |
 | message with arguments | 100               | 91.6    | 89.4  | 42.0         | 26.9        |
+
+![Setup 3](docs/setup-3.png)
 
 ## Run
 
