@@ -2,7 +2,7 @@
 
 [![GitHub Action](https://github.com/goodforgod/java-logger-benchmark/workflows/Java%20CI/badge.svg)](https://github.com/GoodforGod/java-logger-benchmark/actions?query=workflow%3A%22Java+CI%22)
 
-JMH Benchmark for different Java Logger implementations.
+JMH Benchmark for different **synchronous** Java Logger implementations.
 
 Idea of this benchmark is to put all loggers in the same conditions and measure how they all handle the most common scenarios. 
 Compare their implementation in such scenarios, some loggers have more flexible configurations, different APIs, some have more features, different implementations.
